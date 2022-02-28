@@ -86,31 +86,9 @@ router.post("/", (req, res) => {
 // Must come before any /:id put route or "upvote" will be seen as an id parameter
 router.put("/upvote", (req, res) => {
   // Create the vote
-  Vote.create({
-    user_id: req.body.user_id,
-    post_id: req.body.post_id,
-  })
-    .then(() => {
-      // Then find the post just voted on
-      return Post.findOne({
-        where: { id: req.body.post_id },
-        attributes: [
-          "id",
-          "post_url",
-          "title",
-          "created_at",
-          // Raw MySQL aggregate function query to get a count of how many votes a post has
-          [
-            sequelize.literal(
-              `(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)`
-            ),
-            // Returns it under the name "vote_count"
-            "vote_count",
-          ],
-        ],
-      });
-    })
-    .then((dbPostData) => res.json(dbPostData))
+  // Custom static method created in models/Post.js
+  Post.upvote(req.body, { Vote })
+    .then((updatedPostData) => res.json(updatedPostData))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
