@@ -1,0 +1,23 @@
+{{!-- Essentially works via destructuring, so no post.* needed in partials --}}
+{{>post-info post}}
+
+{{#if loggedIn}}
+  <form class="comment-form">
+    <div>
+      <textarea name="comment-body"></textarea>
+    </div>
+
+    <div>
+      <button type="submit">add comment</button>
+      <button type="button" class="upvote-button">upvote</button>
+    </div>
+  </form>
+{{/if}}
+
+{{!-- Not easy to destructure, so requires the use of "this" in partials --}}
+{{>comments post.comments}}
+
+{{#if loggedIn}}
+  <script src="/javascript/comment.js"></script>
+  <script src="/javascript/upvote.js"></script>
+{{/if}}
