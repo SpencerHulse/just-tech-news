@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
       // Pass a single post object into the homepage template
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       // Putting the posts array into an object allows more to be added to the template later
-      res.render("homepage", { posts });
+      res.render("homepage", { posts, loggedIn: req.session.loggedIn });
       // The .get() method serializes the data, which .json() in api routes
     })
     .catch((err) => {
