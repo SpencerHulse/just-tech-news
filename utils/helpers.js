@@ -5,11 +5,10 @@ const format_date = (date) => {
 };
 
 const format_plural = (word, number) => {
-  if (number > 1) {
+  if (number !== 1) {
     return `${word}s`;
-  } else {
-    return word;
   }
+  return word;
 };
 
 const format_url = (url) => {

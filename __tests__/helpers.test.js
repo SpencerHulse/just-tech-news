@@ -8,10 +8,12 @@ test("format_date() returns a date string", () => {
 
 test("format_plural() returns plural words when appropriate", () => {
   const word = "comment";
+  const zero = 0;
   const one = 1;
   const two = 2;
   const many = 3;
 
+  expect(format_plural(word, zero)).toBe("comments");
   expect(format_plural(word, one)).toBe("comment");
   expect(format_plural(word, two)).toBe("comments");
   expect(format_plural(word, many)).toBe("comments");
