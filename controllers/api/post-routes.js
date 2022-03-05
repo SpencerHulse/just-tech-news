@@ -101,14 +101,21 @@ router.post("/", (req, res) => {
 // PUT /api/posts/upvote
 // Must come before any /:id put route or "upvote" will be seen as an id parameter
 router.put("/upvote", (req, res) => {
-  // Create the vote
-  // Custom static method created in models/Post.js
-  Post.upvote(req.body, { Vote })
-    .then((updatedPostData) => res.json(updatedPostData))
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
-    });
+  // Confirm the existence of the session first
+  if (req.session) {
+    // Pass session id along with all destructured properties on req.body
+    // Create the vote
+    // Custom static method created in models/Post.js
+    Post.upvote(
+      { ...req.body, user_id: req.session.user_id },
+      { Vote, Comment, User }
+    )
+      .then((updatedVoteData) => res.json(updatedVoteData))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
 
 router.put("/:id", (req, res) => {
