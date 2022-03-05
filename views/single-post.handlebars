@@ -1,3 +1,4 @@
+{{!-- Essentially works via destructuring, so no post.* needed in partials --}}
 {{>post-info post}}
 
 {{#if loggedIn}}
@@ -13,20 +14,8 @@
   </form>
 {{/if}}
 
-<div class="comments">
-  {{#each post.comments}}
-    <section class="comment">
-      <div class="meta">
-        {{user.username}}
-        on
-        {{created_at}}
-      </div>
-      <div class="text">
-        {{comment_text}}
-      </div>
-    </section>
-  {{/each}}
-</div>
+{{!-- Not easy to destructure, so requires the use of "this" in partials --}}
+{{>comments post.comments}}
 
 {{#if loggedIn}}
   <script src="/javascript/comment.js"></script>
