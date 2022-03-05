@@ -2,9 +2,9 @@
 
 ## Description
 
-It is a backend for a message board using sequelize.
+It is a simple message board built using mysql2, sequelize, handlebars, and bcrypt.
 
-[Heroku Link](https://arcane-anchorage-81381.herokuapp.com/api/users)
+[Heroku Link](https://arcane-anchorage-81381.herokuapp.com/)
 
 ## Table of Contents
 
@@ -22,7 +22,7 @@ Create the database, then run through the console.
 
 ## Usage
 
-There are routes that deal with adding, updated, and deleting various things. This includes users, posts, comments, and votes. You can use Insomnia to test the routes and check the Heroku link for a better visual.
+There is a front-end and back-end for a simple message board that includes front-end templates and back-end routes. Posts can be put up by registered users, who can also comment and upvote. They can go to their dashboard to create new posts, delete old ones, or edit the title.
 
 <a name="contributing"></a>
 
@@ -33,7 +33,7 @@ This project is not accepting contributions at this time.
 
 ## Tests
 
-Simply plug whatever data you want into the routes to get a feel for how it works. Start by creating a user, then a post, then vote and comment using the post and user id of "1".
+There is no need for the emails and passwords to be real or yours. Simply make an account and play around.
 <a name="questions"></a>
 
 ## Questions
