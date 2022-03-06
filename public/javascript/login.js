@@ -21,7 +21,7 @@ async function loginFormHandler(event) {
   }
 }
 
-document.querySelector(".login").addEventListener("click", loginFormHandler);
+document.querySelector(".login").addEventListener("submit", loginFormHandler);
 
 // Signup Form Code
 async function signupFormHandler(event) {
@@ -50,4 +50,4 @@ async function signupFormHandler(event) {
 
 document
   .querySelector(".signup-form")
-  .addEventListener("click", signupFormHandler);
+  .addEventListener("submit", signupFormHandler);
